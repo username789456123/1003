@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	int n;
+	char ch[100];
+	scanf("%d",&n);
+	while(n--){	//whlie表示按题目要求循环判断 
+		scanf("%s",ch);//输入这个字符串 
+		int len = strlen(ch);
+		int np = 0, nt = 0, other = 0, lp, lt;
+		for(int i =0;ch[i] != '\0' ;i++){
+			if(ch[i] == 'P'){
+				np++;
+				lp = i;
+			}
+			else if(ch[i] == 'T'){
+				nt++;
+				lt = i;
+			}
+			else if(ch[i] != 'A'){
+				other++;
+			}
+		}
+			int x = lp, y = lt - lp - 1, z = len - lt - 1;    //x是p的地址也表示开头A的数，y是中间A的数，z是结尾A的数 
+			if(np != 1 || nt != 1 || other != 0 || lt - lp <= 1 || x*y !=z){//1的句表示有超过一个P，2的句表示有超过一个T，3的句表示没有A ，4的句表示P在T的前面 ，5的句表示满足开头A的个数*中间A的个数=结尾A的个数
+			  	printf("NO\n");
+			  }
+			  else{
+			  	printf("YES\n");
+			  }
+	}
+	return 0;
+}
