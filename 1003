@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<string.h>
+int main(void){
+  int n;
+  char ch[100];
+  scanf("%d", &n);
+  while(n--){
+    scanf("%s", ch);
+    int len = strlen(ch);
+    int np = 0, nt = 0, other = 0, lp, lt;
+    for (int i = 0; ch[i] != '\0'; i++){
+      if (ch[i] == 'P'){
+        np++;
+		lp = i;
+      }else if (ch[i] == 'T'){
+        nt++,
+        lt = i;
+      }else if (ch[i] != 'A'){
+          other++;		
+      }
+    }
+    int x = lp, y = lt - lp - 1, z = len - lt - 1;
+	if(np != 1 || nt != 1 || other != 0 || lt - lp <= 1 || x * y != z){
+        printf("NO\n");
+    }else{
+        printf("YES\n");
+	}
+  }
+	return 0;
+}
